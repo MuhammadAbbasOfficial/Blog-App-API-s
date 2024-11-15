@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.codewithabbas.blog.entities.Category;
 import com.codewithabbas.blog.exceptions.RescourceNotFoundException;
@@ -12,6 +13,7 @@ import com.codewithabbas.blog.payloads.CategoryDto;
 import com.codewithabbas.blog.repositories.CategoryRepo;
 import com.codewithabbas.blog.services.CategoryService;
 
+@Service
 public class CategoryServiceImpl implements CategoryService{
 	
 	@Autowired
@@ -34,8 +36,8 @@ public class CategoryServiceImpl implements CategoryService{
 
 		Category cat = this.categoryRepo.findById(id).orElseThrow(()-> new RescourceNotFoundException("Category", "category ID: ", id));
 		
-		cat.setCategoryTitle(categoryDto.getName());
-		cat.setCategoryDescription(categoryDto.getDescription());
+		cat.setTitle(categoryDto.getTitle());
+		cat.setDescription(categoryDto.getDescription());
 		
 		Category updateCat = this.categoryRepo.save(cat);
 		

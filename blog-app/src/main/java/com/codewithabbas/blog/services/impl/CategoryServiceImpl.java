@@ -38,6 +38,7 @@ public class CategoryServiceImpl implements CategoryService{
 		
 		cat.setTitle(categoryDto.getTitle());
 		cat.setDescription(categoryDto.getDescription());
+	
 		
 		Category updateCat = this.categoryRepo.save(cat);
 		

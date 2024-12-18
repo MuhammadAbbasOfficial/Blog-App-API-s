@@ -6,6 +6,7 @@ import com.codewithabbas.blog.entities.Category;
 import com.codewithabbas.blog.entities.Post;
 import com.codewithabbas.blog.entities.User;
 import com.codewithabbas.blog.payloads.PostDto;
+import com.codewithabbas.blog.payloads.PostResponse;
 
 public interface PostService {
 	
@@ -19,16 +20,18 @@ public interface PostService {
 	void deletPost(int postId);
 	
 	//get list of posts
-	List<PostDto> getAllPosts();
+	PostResponse getAllPosts(int pageNumber, int pageSize);
 	
 	//get Post
-	Post getPostById(int postId);
+	PostDto getPostById(int postId);
 	
 	//get post by categroy
-	List<PostDto> getAllPostByCategory(Category category);
+//	PostDto getAllPostByCategory(int categoryId, int pageNumber, int pageSize);
+	
+	List<PostDto> getAllPostByCategory(int categoryId);
 	
 	//get Post by user
-	List<PostDto> getPostByUser(User user);
+	List<PostDto> getPostByUser(int userId);
 	
 
 }
